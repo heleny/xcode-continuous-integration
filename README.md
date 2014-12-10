@@ -127,5 +127,5 @@ Once done, turn it off
 **Q**: Why Bot doesn't show up correctly on Xcode?<br/>
 **A**: Try to delete all the repos and server via Xcode -> Preferences -> Accounts, and then add them back, do a clean on /Library/Server cache and bots, and flush out Xcode's DerivedData. 
 
-**Q**: Where is the *.ipa created by Xcode Bot?<br/>
+**Q**: Where is the ipa created by Xcode Bot?<br/>
 **A**: ```/Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa```
