@@ -54,15 +54,15 @@ How to setup Xcode continuous integration using Xcode Server
 * If push notification still doesn't work, you can try to re-sign your ipa
 
 ```markdown       
-SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
-PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/xxxxx_adhoc.mobileprovision"
-/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PRODUCT_NAME}.app" -o "/tmp/${PRODUCT_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}"
+		SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
+		PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/xxxxx_adhoc.mobileprovision"
+		/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PRODUCT_NAME}.app" -o "/tmp/${PRODUCT_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}"
 ```
 
 * echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
 
 ```markdown
-set
+		set
 ```
 
 * Once the build is done, click on Logs, all the env are listed there
