@@ -12,8 +12,7 @@ How to setup Xcode continuous integration using Xcode Server
 ```
 		$s3cmd --configuration
 ```
-	or
-``
+```
 		s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
 		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
 ```
