@@ -19,11 +19,13 @@ How to setup Xcode continuous integration using Xcode Server
 		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
 ```
 
-* For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
+* For uploading *.ipa to TestFlight, see details here [Upload Xcode Build to TestFlight]
 * If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds].
 
-  My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
-* In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
+  My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain.  <br/>
+  Make sure to download the Apple Production IOS Push Services certificate to the Keychain Access.
+
+* In order to enable Apple Push Notification for Bot builds, make sure you have setup 'Code Signing Entitlements'
 * Create Entitlements.plist if not available, it would look like something similar to the following: 
 
 ```markdown
@@ -47,7 +49,7 @@ How to setup Xcode continuous integration using Xcode Server
 
 * Click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'.
 
-  It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
+  It took me a couple of days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
 * Steps to verify entitlements is picked by the code signing process: 
 	* unzip *.ipa file
 	* cd Payload/*.app/
