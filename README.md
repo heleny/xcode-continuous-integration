@@ -47,10 +47,10 @@ How to setup Xcode continuous integration using Xcode Server
 * Click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
   It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
 * Steps to verify entitlements is picked by the code signing process: 
-			- unzip *.ipa file
-			- cd Payload/*.app/
-			- open your app binary file and look for aps-environment
-			- if aps-environment is not in the binary file but it's found in the embedded.mobileprovision, double check Entitlements.plist
+	* unzip *.ipa file
+	* cd Payload/*.app/
+	* open your app binary file and look for aps-environment
+	* if aps-environment is not in the binary file but it's found in the embedded.mobileprovision, double check Entitlements.plist
 * If push notification still doesn't work, you can try to re-sign your ipa
 
 ```markdown       
