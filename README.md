@@ -16,14 +16,14 @@ How to setup Xcode continuous integration using Xcode Server
 		s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
 		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
 ```
-- For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
-- If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
-  My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
-- In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
-	2. create Entitlements.plist, which will look like something similar to the following: 
+	2. For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
+	3. If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
+  	   My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
+	4. In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
+	5. create Entitlements.plist, which will look like something similar to the following: 
 
-```
-        <?xml version="1.0" encoding="UTF-8"?>
+``` 
+<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 	<plist version="1.0">
 	<dict>
@@ -40,14 +40,14 @@ How to setup Xcode continuous integration using Xcode Server
 	</dict>
 	</plist>
 ```
-        3. click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
+        6. click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
         It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
-        4. Steps to verify entitlements is picked by the code signing process: 
+        7. Steps to verify entitlements is picked by the code signing process: 
 			* unzip *.ipa file
 			* cd Payload/*.app/
 			* open your app binary file and look for aps-environment
 			* if aps-environment is not in the binary file but it's found in the embedded.mobileprovision, double check Entitlements.plist
-        5. If push notification still doesn't work, you can try to re-sign your ipa
+        8. If push notification still doesn't work, you can try to re-sign your ipa
         
 ```
         SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
