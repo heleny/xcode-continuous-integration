@@ -8,19 +8,21 @@ How to setup Xcode continuous integration using Xcode Server
 - Install the latest [Xcode]
 - Create a Bot in Xcode
 - Upload the ipa to [Amazon S3] or TestFlight using [s3cmd]
-	1.  set up access_key and secret_key of the aws account
+          - set up access_key and secret_key of the aws account
+
 ```
 		$s3cmd --configuration
 ```
+
 ```
 		s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
 		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
 ```
-	2. For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
-	3. If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
-  	   My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
-	4. In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
-	5. create Entitlements.plist, which will look like something similar to the following: 
+          - For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
+          - If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
+  	    My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
+          - In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
+          - create Entitlements.plist, which will look like something similar to the following: 
 
 ``` 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -40,25 +42,25 @@ How to setup Xcode continuous integration using Xcode Server
 	</dict>
 	</plist>
 ```
-        6. click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
-        It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
-        7. Steps to verify entitlements is picked by the code signing process: 
+          - click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
+            It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
+          - Steps to verify entitlements is picked by the code signing process: 
 			* unzip *.ipa file
 			* cd Payload/*.app/
 			* open your app binary file and look for aps-environment
 			* if aps-environment is not in the binary file but it's found in the embedded.mobileprovision, double check Entitlements.plist
-        8. If push notification still doesn't work, you can try to re-sign your ipa
+          - If push notification still doesn't work, you can try to re-sign your ipa
         
 ```
         SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
 	PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/xxxxx_adhoc.mobileprovision"
 	/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PRODUCT_NAME}.app" -o "/tmp/${PRODUCT_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}"
 ```
-	5. echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
+          - echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
 ```
 	set
 ```
-	6. Once the build is done, click on Logs, all the env are listed there
+          - Once the build is done, click on Logs, all the env are listed there
 
 
 Notes:
