@@ -1,4 +1,4 @@
-##xcode-continuous-integration 
+## Xcode Continuous Integration 
 
 **Notes for myself**
 
