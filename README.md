@@ -22,6 +22,7 @@ How to setup Xcode continuous integration using Xcode Server
 - In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
 	- create Entitlements.plist, which will look like something similar to the following: 
 
+```
         <?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 	<plist version="1.0">
@@ -38,7 +39,7 @@ How to setup Xcode continuous integration using Xcode Server
         	</array>
 	</dict>
 	</plist>
-
+```
         - Click on project target -> Build Settings -> Code Signing -> add the path of Entitlements.plist to 'Code Signing Entitlements'
         It took me a couple days to figure this out.  Thanks to these posts on stackoverflow [here] and [there].
         - Steps to verify entitlements is picked by the code signing process: 
@@ -48,11 +49,11 @@ How to setup Xcode continuous integration using Xcode Server
 			* if aps-environment is not in the binary file but it's found in the embedded.mobileprovision, double check Entitlements.plist
         - If push notification still doesn't work, you can try to re-sign your ipa
         
-
+```
         SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
 	PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/xxxxx_adhoc.mobileprovision"
 	/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PRODUCT_NAME}.app" -o "/tmp/${PRODUCT_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}"
-
+```
 	- echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
 ```
 	set
