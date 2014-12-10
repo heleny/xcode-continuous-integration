@@ -95,7 +95,7 @@ To enable these features you must specify an entitlements file during code signi
 CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 8.1'.<br/>
 **A**: Copy provisioning profiles from ~/Library/MobileDevice/Provisioning\ Profiles/ to /Library/Developer/XcodeServer/ProvisioningProfiles/. 
 
-**Q**: Hwo to remove all traces of ever running Xcode Server on your system?<br/>
+**Q**: How to remove all traces of ever running Xcode Server on your system?<br/>
 **A**: ```sudo xcrun xcscontrol --reset``` 
 
 **Q**: If you're hosting the Xcode server on a mac mini, what is the easiest and quickest way to remote access your Server?<br/>
