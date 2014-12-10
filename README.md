@@ -91,15 +91,15 @@ To enable these features you must specify an entitlements file during code signi
 
 ## FAQ on Xcode Server and Bot ##
 
-Q: No matching provisioning profile found: Your build settings specify a provisioning profile with the UUID “XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX”, however, no such provisioning profile was found.
+**Q**: No matching provisioning profile found: Your build settings specify a provisioning profile with the UUID “XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX”, however, no such provisioning profile was found.
 CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 8.1'.<br/>
-A: Copy provisioning profiles from ~/Library/MobileDevice/Provisioning\ Profiles/ to /Library/Developer/XcodeServer/ProvisioningProfiles/. 
+**A**: Copy provisioning profiles from ~/Library/MobileDevice/Provisioning\ Profiles/ to /Library/Developer/XcodeServer/ProvisioningProfiles/. 
 
-Q: Hwo to remove all traces of ever running Xcode Server on your system?<br/>
-A: ```sudo xcrun xcscontrol --reset``` 
+**Q**: Hwo to remove all traces of ever running Xcode Server on your system?<br/>
+**A**: ```sudo xcrun xcscontrol --reset``` 
 
-Q: If you're hosting the Xcode server on a mac mini, what is the easiest and quickest way to remote access your Server?<br/>
-A: ssh into your server, and then run the following
+**Q**: If you're hosting the Xcode server on a mac mini, what is the easiest and quickest way to remote access your Server?<br/>
+**A**: ssh into your server, and then run the following
 ```markdown
 		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -clientopts -setvnclegacy -vnclegacy yes -clientopts -setvncpw -vncpw traderev -restart -agent -privs -all
 		open /System/Library/CoreServices/Screen\ Sharing.app/
@@ -109,8 +109,8 @@ Once done, turn it off
 		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
 ```
 
-Q: How to fix xcode build server's internal-checkout-error?<br/>
-A: A couple of things need to check: 
+**Q**: How to fix xcode build server's internal-checkout-error?<br/>
+**A**: A couple of things need to check: 
 - submodule detached from HEAD
 	- check Xcode -> Source Control
 	- make sure all working branch are pointing to master branch
@@ -124,8 +124,8 @@ A: A couple of things need to check:
 		rm -rf /Library/Server/Xcode/Data/BotRuns
 		rm -f /Library/Server/Xcode/Data/BotRuns/Cache
 
-Q: Why Bot doesn't show up correctly on Xcode?<br/>
-A: Try to delete all the repos and server via Xcode -> Preferences -> Accounts, and then add them back, do a clean on /Library/Server cache and bots, and flush out Xcode's DerivedData. 
+**Q**: Why Bot doesn't show up correctly on Xcode?<br/>
+**A**: Try to delete all the repos and server via Xcode -> Preferences -> Accounts, and then add them back, do a clean on /Library/Server cache and bots, and flush out Xcode's DerivedData. 
 
-Q: Where is the *.ipa created by Xcode Bot?<br/>
-A: /Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa
+**Q**: Where is the *.ipa created by Xcode Bot?<br/>
+**A**: /Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa
