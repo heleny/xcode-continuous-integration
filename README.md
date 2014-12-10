@@ -21,8 +21,8 @@ How to setup Xcode continuous integration using Xcode Server
   My bots kept failing when I forgot to copy my keys to System instead of Login on Keychain
 - In order to enable Apple Push Notification for Bot build, make sure you have setup 'Code Signing Entitlements'
 	- create Entitlements.plist, which will look like something similar to the following: 
-<pre><code>
-	<?xml version="1.0" encoding="UTF-8"?>
+<br/><pre><code>
+<?xml version="1.0" encoding="UTF-8"?>
 	<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 	<plist version="1.0">
 	<dict>
