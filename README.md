@@ -10,10 +10,14 @@ How to setup Xcode continuous integration using Xcode Server
 * Upload the ipa to [Amazon S3] or TestFlight using [s3cmd]
 * set up access_key and secret_key of the aws account
 
+```markdown
 		$s3cmd --configuration
+```
 
+```markdown
 		s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
 		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
+```
 
 * For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
 * If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
@@ -57,7 +61,9 @@ My bots kept failing when I forgot to copy my keys to System instead of Login on
 
 * echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
 
+```markdown
 	set
+```
 
 * Once the build is done, click on Logs, all the env are listed there
 
