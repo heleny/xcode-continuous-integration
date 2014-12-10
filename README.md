@@ -2,6 +2,8 @@
 
 **Notes for myself**
 
+Here is Apple's guide on [Xcode Continuous Integration Guide].
+
 How to setup Xcode continuous integration using Xcode Server
 
 * Install and configure [OS X Server]
@@ -60,7 +62,7 @@ How to setup Xcode continuous integration using Xcode Server
 ```markdown       
 		SIGNING_IDENTITY="xxxxxxxxxxxxxxxx.mobileprovision"
 		PROVISIONING_PROFILE="${HOME}/Library/MobileDevice/Provisioning Profiles/xxxxx_adhoc.mobileprovision"
-		/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PRODUCT_NAME}.app" -o "/tmp/${PRODUCT_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISIONING_PROFILE}"
+		/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${RELEASE_BUILDDIR}/${APPLICATION_NAME}.app" -o "${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${SIGNING_IDENTITY}" --embed "${PROVISONING_PROFILE}"
 ```
 
 * echo set using bot script by editing the bot, [access-xcode-server-bot-run-envariables] is extremely helpful.
@@ -85,3 +87,45 @@ To enable these features you must specify an entitlements file during code signi
 [here]: http://stackoverflow.com/questions/10987102/how-to-fix-no-valid-aps-environment-entitlement-string-found-for-application
 [there]: http://stackoverflow.com/questions/21947261/ipa-created-via-xcode-bot-fails-to-run-for-apns-but-runs-if-built-manually-via-x
 [access-xcode-server-bot-run-envariables]: http://stackoverflow.com/questions/25127146/access-build-folder-in-xcode-server-ci-bot-run-env-varaibles
+[Xcode Continuous Integration Guide]: https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/Xcode_Continuous_Integration_Guide.pdf
+
+## FAQ on Xcode Server and Bot ##
+
+Q: No matching provisioning profile found: Your build settings specify a provisioning profile with the UUID “XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX”, however, no such provisioning profile was found.
+CodeSign error: code signing is required for product type 'Application' in SDK 'iOS 8.1'.
+A: Copy provisioning profiles from ~/Library/MobileDevice/Provisioning\ Profiles/ to /Library/Developer/XcodeServer/ProvisioningProfiles/. 
+
+Q: Hwo to remove all traces of ever running Xcode Server on your system?
+A: ```sudo xcrun xcscontrol --reset``` 
+
+Q: If you're hosting the Xcode server on a mac mini, what is the easiest and quickest way to remote access your Server? 
+A: ssh into your server, and then run the following
+```markdown
+		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -clientopts -setvnclegacy -vnclegacy yes -clientopts -setvncpw -vncpw traderev -restart -agent -privs -all
+		open /System/Library/CoreServices/Screen\ Sharing.app/
+```
+Once done, turn it off
+```markdown
+		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
+```
+
+Q: How to fix xcode build server's internal-checkout-error?
+A: A couple of things need to check: 
+- submodule detached from HEAD
+	- check Xcode -> Source Control
+	- make sure all working branch are pointing to master branch
+	
+- Error Domain=XCSBuildServiceDomain Code=-1 "SCM dictionary scmType is nil"
+	- make sure all working copies under Xcode -> Source Control are from the same workspace
+	- make sure all submodules are in the same workspace of the TradeRev
+	- otherwise, clean it up 
+	- if it still doesn't work,  clean server cache:
+		rm -rf ~/Library/Developer/Xcode/DerivedData/
+		rm -rf /Library/Server/Xcode/Data/BotRuns
+		rm -f /Library/Server/Xcode/Data/BotRuns/Cache
+
+Q: Why Bot doesn't show up correctly on Xcode?
+A: Try to delete all the repos and server via Xcode -> Preferences -> Accounts, and then add them back, do a clean on /Library/Server cache and bots, and flush out Xcode's DerivedData. 
+
+Q: Where is the *.ipa created by Xcode Bot?
+A: /Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa
