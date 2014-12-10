@@ -12,10 +12,10 @@ How to setup Xcode continuous integration using Xcode Server
 ```
 		$s3cmd --configuration
 ```
-	- the upload 'run script' will look something like this: 
-```
-	s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
-	$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
+	or
+``
+		s3cmd="python ${HOME_DIRECTORY}/dev/s3cmd-master/s3cmd --access_key=xxxxxxxxxx --secret_key=xxxxxxxxxx"
+		$s3cmd put ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa s3://${FOLDER_NAME}/${APPLICATION_NAME}.ipa	
 ```
 - For uploading to TestFlight, see details here [Upload Xcode Build to TestFlight]
 - If bot build fails somehow, make sure to check out [Xcode Bots Common Problems And Workarounds]
