@@ -132,7 +132,7 @@ Once done, turn it off
 **Q**: Where is the ipa created by Xcode Bot?<br/>
 **A**: 
 ```markdown 
-		/Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa
+/Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa
 ```
 
 **Q**: Xcode 6 for Enterprise Deployment does not create plist for ipa anymore.  Why and how to solve it?
