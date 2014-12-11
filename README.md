@@ -170,4 +170,4 @@ Once done, turn it off
 			</dict>
 		</plist>
 ```
-[use old plist from Xcode 5]: http://stackoverflow.com/questions/25910387/xcode-6-save-for-enterprise-deployment-does-not-create-plist-for-ipa-anymore
+[old plist from Xcode 5]: http://stackoverflow.com/questions/25910387/xcode-6-save-for-enterprise-deployment-does-not-create-plist-for-ipa-anymore
