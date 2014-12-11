@@ -120,12 +120,50 @@ Once done, turn it off
 	- make sure all submodules are in the same workspace of the TradeRev
 	- otherwise, clean it up 
 	- if it still doesn't work,  clean server cache:
+```markdown
 		rm -rf ~/Library/Developer/Xcode/DerivedData/
 		rm -rf /Library/Server/Xcode/Data/BotRuns
 		rm -f /Library/Server/Xcode/Data/BotRuns/Cache
+```
 
 **Q**: Why Bot doesn't show up correctly on Xcode?<br/>
 **A**: Try to delete all the repos and server via Xcode -> Preferences -> Accounts, and then add them back, do a clean on /Library/Server cache and bots, and flush out Xcode's DerivedData. 
 
 **Q**: Where is the ipa created by Xcode Bot?<br/>
 **A**: ```/Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa```
+
+**Q**: Xcode 6 for Enterprise Deployment does not create plist for ipa anymore.  Why and how to solve it?
+**A**: Use the old plist from Xcode 5
+```markdown
+		<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+		<plist version="1.0">
+			<dict>
+        			<key>items</key>
+        			<array>
+                			<dict>
+                        			<key>assets</key>
+                        			<array>
+                                			<dict>
+                                        			<key>kind</key>
+  			                                        <string>software-package</string>
+			                                        <key>url</key>
+                       				                <string>[INSERT URL HERE]</string>
+                                			</dict>
+                        			</array>
+                        			<key>metadata</key>
+                        			<dict>
+                                			<key>bundle-identifier</key>
+                                			<string>[INSERT BUNDLE ID HERE]</string>
+			                                <key>bundle-version</key>
+			                                <string>[INSERT VERSION HERE]</string>
+                                			<key>kind</key>
+			                                <string>software</string>
+                       				        <key>title</key>
+                                			<string>[INSERT APP TITLE HERE]</string>
+                        			</dict>
+                			</dict>
+        			</array>
+			</dict>
+		</plist>
+```
