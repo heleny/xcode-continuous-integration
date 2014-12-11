@@ -136,7 +136,7 @@ Once done, turn it off
 ```
 
 **Q**: Xcode 6 for Enterprise Deployment does not create plist for ipa anymore.  Why and how to solve it?
-**A**: Don't know why.  I would use the old plist from Xcode 5
+**A**: Don't know why.  I would use the [old plist from Xcode 5]
 ```markdown
 		<?xml version="1.0" encoding="UTF-8"?>
 		<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -170,3 +170,4 @@ Once done, turn it off
 			</dict>
 		</plist>
 ```
+[use old plist from Xcode 5]: http://stackoverflow.com/questions/25910387/xcode-6-save-for-enterprise-deployment-does-not-create-plist-for-ipa-anymore
