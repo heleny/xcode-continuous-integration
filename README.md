@@ -133,8 +133,8 @@ Once done, turn it off
 **A**: ```/Library/Server/Xcode/Data/BotRuns/BotRun-ec531f8a-8501-486a-84ad-98045f03f0a2.bundle/output/ibot.ipa```
 
 **Q**: Xcode 6 for Enterprise Deployment does not create plist for ipa anymore.  Why and how to solve it?
-**A**: Use the old plist from Xcode 5
-```markdown
+**A**: Don't know why.  I would use the old plist from Xcode 5
+```
 		<?xml version="1.0" encoding="UTF-8"?>
 		<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 		<plist version="1.0">
