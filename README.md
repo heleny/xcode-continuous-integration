@@ -171,7 +171,7 @@ Once done, turn it off
 		</plist>
 ```
 **Q**: How to switch to a different branch for a Xcode Bot?  
-**A**: 'git co new_branch_name' won't work.  This is what I do to make it work and then need to create a new bot (apply this change to an existing bot won't work :( ):  
+**A**: 'git co new_branch_name' won't work.  This is what I do to make it work and then need to create a new bot (apply this change to an existing bot won't work :frowning: ):  
 ```markdown
 		Xcode -> Source Control -> [PROJECT_NAME] -> Switch to Branch
 ```
