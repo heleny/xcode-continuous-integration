@@ -171,9 +171,10 @@ Once done, turn it off
 		</plist>
 ```
 **Q**: How to switch to a different branch for a Xcode Bot?  
-**A**: 'git co new_branch_name' won't work.  This is what I do to make it work and then need to create a new bot (apply this change to an existing bot won't work :frowning: ):  
+**A**: 'git co new_branch_name' won't work.  This is what I do to make it work and then need to create a new bot (apply this change to an existing bot won't work :frowning:  source is from [Xcode Service - Choose a git branch]):  
 ```markdown
 		Xcode -> Source Control -> [PROJECT_NAME] -> Switch to Branch
 ```
 
 [old plist from Xcode 5]: http://stackoverflow.com/questions/25910387/xcode-6-save-for-enterprise-deployment-does-not-create-plist-for-ipa-anymore
+[Xcode Service - Choose a git branch]: https://devforums.apple.com/thread/210921
