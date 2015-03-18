@@ -89,6 +89,15 @@ To enable these features you must specify an entitlements file during code signi
 [access-xcode-server-bot-run-envariables]: http://stackoverflow.com/questions/25127146/access-build-folder-in-xcode-server-ci-bot-run-env-varaibles
 [Xcode Continuous Integration Guide]: https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/Xcode_Continuous_Integration_Guide.pdf
 
+### Upload ipa to Apple iTune Connect TestFlight
+* Download [deliver]
+* after script looks like the following
+```
+deliver testflight -u ${APPLE_USER_ID} -a ${APP_APPLE_ID} ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa
+```
+
+[deliver]: https://github.com/KrauseFx/deliver
+
 ## FAQ on Xcode Server and Bot ##
 
 **Q**: No matching provisioning profile found: Your build settings specify a provisioning profile with the UUID “XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX”, however, no such provisioning profile was found.
