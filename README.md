@@ -94,6 +94,7 @@ To enable these features you must specify an entitlements file during code signi
 * after script looks like the following
 ```
 deliver testflight -u ${APPLE_USER_ID} -a ${APP_APPLE_ID} ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa
+/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f ${XCS_OUTPUT_DIR}/${XCS_BOT_NAME}.ipa -u APPLE_ID -p APPLE_ID_PASSWORD
 ```
 
 [deliver]: https://github.com/KrauseFx/deliver
