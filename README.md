@@ -188,3 +188,6 @@ Once done, turn it off
 
 [old plist from Xcode 5]: http://stackoverflow.com/questions/25910387/xcode-6-save-for-enterprise-deployment-does-not-create-plist-for-ipa-anymore
 [Xcode Service - Choose a git branch]: https://devforums.apple.com/thread/210921
+
+**Q** How to auto-increment the build verison number?
+Hint: http://blog.jaredsinclair.com/post/97193356620/the-best-of-all-possible-xcode-automated-build
