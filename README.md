@@ -127,7 +127,7 @@ Once done, turn it off
 	
 - Error Domain=XCSBuildServiceDomain Code=-1 "SCM dictionary scmType is nil"
 	- make sure all working copies under Xcode -> Source Control are from the same workspace
-	- make sure all submodules are in the same workspace of the TradeRev
+	- make sure all submodules are in the same workspace of the project 
 	- otherwise, clean it up 
 	- if it still doesn't work,  clean server cache:
 ```markdown
