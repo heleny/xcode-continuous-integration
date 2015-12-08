@@ -111,7 +111,7 @@ CodeSign error: code signing is required for product type 'Application' in SDK '
 **Q**: If you're hosting the Xcode server on a mac mini, what is the easiest and quickest way to remote access your Server?<br/>
 **A**: ssh into your server, and then run the following
 ```markdown
-		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -clientopts -setvnclegacy -vnclegacy yes -clientopts -setvncpw -vncpw traderev -restart -agent -privs -all
+		sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -clientopts -setvnclegacy -vnclegacy yes -clientopts -setvncpw -vncpw appname -restart -agent -privs -all
 		open /System/Library/CoreServices/Screen\ Sharing.app/
 ```
 Once done, turn it off
